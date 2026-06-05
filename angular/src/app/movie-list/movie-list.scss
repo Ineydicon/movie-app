@@ -1,0 +1,136 @@
+.catalog-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 50px 0; /* Убираем жесткие боковые паддинги отсюда */
+  box-sizing: border-box;
+  background: #f8fafc; 
+  color: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    margin-bottom: 40px;
+
+    h2 {
+      color: #0f172a;
+      font-size: 38px;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px 0;
+  }
+}
+
+/* ГЛАВНАЯ ЛЕНТА: Строго слева направо, без переносов вниз */
+.movies-list {
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; /* ЖЕСТКО ЗАПРЕЩАЕМ ПЕРЕНОС ВНИЗ */
+  overflow-x: auto; /* Включаем красивый горизонтальный скролл */
+  gap: 35px; 
+  width: 100%;
+  padding: 20px 60px 40px 60px; /* Паддинги по бокам, чтобы карточки эстетично уходили за край экрана */
+  box-sizing: border-box;
+
+  /* safe center центрирует карточки, если экран огромный, но не ломает скролл на обычных мониторах */
+  justify-content: safe center; 
+
+  /* Эстетичный тонкий скроллбар */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+}
+
+/* Блоки снизу (Улюблені / Подивитись) */
+.results-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px; /* Чуть расширим нижнюю сетку под стать большим карточкам */
+  padding: 0 60px;
+  box-sizing: border-box;
+
+  .result-block {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+
+    h3 {
+      margin-top: 0;
+      color: #0f172a;
+      font-size: 22px;
+      font-weight: 700;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 16px;
+      margin-bottom: 25px;
+    }
+
+    .empty-text {
+      color: #94a3b8;
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    /* Внутри избранного карточки тоже выстраиваются в горизонтальный ряд */
+    .embedded-cards {
+      display: flex;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important; /* Тоже в одну линию */
+      overflow-x: auto;
+      justify-content: safe center;
+      gap: 25px;
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 24px;
+
+      /* Скроллбар для нижних блоков */
+      &::-webkit-scrollbar { height: 6px; }
+      &::-webkit-scrollbar-track { background: #f1f5f9; }
+      &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+      .movie-card {
+/* Тепер картки в обраному мають точно такий самий солідний вигляд */
+        min-width: 340px;
+        max-width: 340px;
+        height: 500px;
+        padding: 22px;
+        
+        .movie-title {
+          font-size: 20px;
+        }
+        .movie-description {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="catalog-container">
+  <h2>Каталог фільмів</h2>
+  
+  <div class="movies-list">
+    @for (item of movies; track item.id) {
+      <app-movie-card 
+        [movie]="item" 
+        (addToFavorite)="addMovieToFavorites($event)"
+        (addToWatchList)="addMovieToWatchList($event)">
+      </app-movie-card>
+    }
+  </div>
+
+  <hr>
+
+  <div class="results-sections">
+    <div class="result-block">
+      <h3>❤️ Улюблені</h3>
+      @if (favorites.length === 0) {
+        <p class="empty-text">Список порожній...</p>
+      } @else {
+        <div class="embedded-cards">
+          @for (item of favorites; track item.id) {
+            <app-movie-card [movie]="item" [hideActions]="true"></app-movie-card>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="result-block">
+      <h3>⏳ Подивитись</h3>
+      @if (watchList.length === 0) {
+        <p class="empty-text">Список порожній...</p>
+      } @else {
+        <div class="embedded-cards">
+          @for (item of watchList; track item.id) {
+            <app-movie-card [movie]="item" [hideActions]="true"></app-movie-card>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

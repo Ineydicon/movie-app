@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { MovieListComponent } from './movie-list/movie-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [MovieListComponent], // Підключаємо наш список замість RouterOutlet
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
-export class App {
-  protected readonly title = signal('angular');
+export class App { // Тут обов'язково має бути App, а не AppComponent!
+  title = 'movie-app';
 }

@@ -1,0 +1,41 @@
+<div class="movie-card">
+  <img [src]="movie.poster" alt="Poster" class="movie-bg-poster">
+  <div class="card-overlay"></div>
+
+  <div class="movie-info">
+    <div class="card-header">
+      <div class="badge-row">
+        <span class="movie-rating">⭐ {{ movie.rating }}</span>
+        <span class="age-limit" [ngClass]="getAgeClass(movie.ageLimit)">{{ movie.ageLimit }}</span>
+      </div>
+      <h3 class="movie-title">
+        {{ movie.title }} <span class="movie-year">({{ movie.year }})</span>
+      </h3>
+    </div>
+
+    <div class="card-body">
+      <div class="meta-line"><b>Режисер:</b> {{ movie.director }}</div>
+      <div class="meta-line"><b>Жанр:</b> {{ movie.genre }}</div>
+      <p class="movie-description">{{ movie.description }}</p>
+    </div>
+
+    <div class="card-footer-actions">
+      <button class="btn-details">Детальніше</button>
+      
+      <div class="movie-icons" [hidden]="hideActions">
+        <button class="btn btn-heart" [class.active]="movie.isFavorite" (click)="toggleFavorite($event)" title="Улюблене">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+        
+        <button class="btn btn-clock" [class.active]="movie.isWatchLater" (click)="toggleWatchLater($event)" title="Подивитись пізніше">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
