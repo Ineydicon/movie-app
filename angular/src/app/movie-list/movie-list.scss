@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 50px 0; /* Убираем жесткие боковые паддинги отсюда */
+  padding: 50px 0; 
   box-sizing: border-box;
   background: #f8fafc; 
   color: #0f172a;
@@ -36,18 +36,18 @@
   }
 }
 
-/* ГЛАВНАЯ ЛЕНТА: Строго слева направо, без переносов вниз */
+/* ГЛАВНАЯ ЛЕНТА */
 .movies-list {
   display: flex;
   flex-direction: row !important;
-  flex-wrap: nowrap !important; /* ЖЕСТКО ЗАПРЕЩАЕМ ПЕРЕНОС ВНИЗ */
-  overflow-x: auto; /* Включаем красивый горизонтальный скролл */
+  flex-wrap: nowrap !important; 
+  overflow-x: auto; 
   gap: 35px; 
   width: 100%;
-  padding: 20px 60px 40px 60px; /* Паддинги по бокам, чтобы карточки эстетично уходили за край экрана */
+  padding: 20px 60px 40px 60px; 
   box-sizing: border-box;
 
-  /* safe center центрирует карточки, если экран огромный, но не ломает скролл на обычных мониторах */
+  
   justify-content: safe center; 
 
   /* Эстетичный тонкий скроллбар */
@@ -73,7 +73,7 @@
   flex-direction: column;
   gap: 40px;
   width: 100%;
-  max-width: 1400px; /* Чуть расширим нижнюю сетку под стать большим карточкам */
+  max-width: 1400px; 
   padding: 0 60px;
   box-sizing: border-box;
 
@@ -100,11 +100,11 @@
       font-size: 15px;
     }
 
-    /* Внутри избранного карточки тоже выстраиваются в горизонтальный ряд */
+    
     .embedded-cards {
       display: flex;
       flex-direction: row !important;
-      flex-wrap: nowrap !important; /* Тоже в одну линию */
+      flex-wrap: nowrap !important; 
       overflow-x: auto;
       justify-content: safe center;
       gap: 25px;
@@ -112,13 +112,13 @@
       border-radius: 16px;
       padding: 24px;
 
-      /* Скроллбар для нижних блоков */
+      
       &::-webkit-scrollbar { height: 6px; }
       &::-webkit-scrollbar-track { background: #f1f5f9; }
       &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
       .movie-card {
-/* Тепер картки в обраному мають точно такий самий солідний вигляд */
+
         min-width: 340px;
         max-width: 340px;
         height: 500px;

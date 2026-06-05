@@ -12,7 +12,7 @@ export class MovieCardComponent {
   @Input() movie: any;
   @Input() hideActions: boolean = false;
   
-  // Имена событий строго как в твоем HTML шаблоне!
+  
   @Output() addToFavorite = new EventEmitter<any>(); 
   @Output() addToWatchList = new EventEmitter<any>();
 

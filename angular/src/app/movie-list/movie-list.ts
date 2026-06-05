@@ -39,7 +39,7 @@ export class MovieListComponent {
       id: 3,
       title: 'F1',
       year: 2025,
-      poster: 'img/F1.jpg', // Крутой спорткар на темном фоне
+      poster: 'img/F1.jpg', 
       rating: 7.6,
       genre: 'Спорт, Драма, Экшен',
       director: 'Джозеф Косінскі',
@@ -54,25 +54,25 @@ export class MovieListComponent {
 
 addMovieToFavorites(movie: any) {
     if (movie.isFavorite) {
-      // Если лайкнули и фильма еще нет в списке — добавляем по id
+      
       if (!this.favorites.some(m => m.id === movie.id)) {
         this.favorites.push(movie);
       }
     } else {
-      // Если лайк убрали — удаляем из массива favorites
+      
       this.favorites = this.favorites.filter(m => m.id !== movie.id);
     }
   }
 
-  // Метод для обработки клика на часики
+  
   addMovieToWatchList(movie: any) {
     if (movie.isWatchLater) {
-      // Если нажали "посмотреть" — добавляем в список
+      
       if (!this.watchList.some(m => m.id === movie.id)) {
         this.watchList.push(movie);
       }
     } else {
-      // Если отжали — удаляем из watchList
+      
       this.watchList = this.watchList.filter(m => m.id !== movie.id);
     }
   }
