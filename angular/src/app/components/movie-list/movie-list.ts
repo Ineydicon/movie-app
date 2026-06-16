@@ -19,7 +19,7 @@ export class MovieListComponent {
       rating: 8.7,
       genre: 'Фантастика, Драма',
       director: 'Крістофер Нолан',
-      duration: '169 хв',
+      durationInMins:169,
       ageLimit: '12+',
       description: 'Подорож дослідників, які використовують нещодавно виявлену космічную діру, щоб обійти обмеження на людські польоти.'
     },
@@ -31,7 +31,7 @@ export class MovieListComponent {
       rating: 7.3,
       genre: 'Екшн, Кримінал, Драма',
       director: 'Метт Рівз',
-      duration: '176 хв',
+      durationInMins:176,
       ageLimit: '16+',
       description: 'Коли серійний вбивця націлюється на еліту Готема, Бетмен змушений розслідувати приховану корупцію в місті.'
     },
@@ -43,8 +43,8 @@ export class MovieListComponent {
       rating: 7.6,
       genre: 'Спорт, Драма, Экшен',
       director: 'Джозеф Косінскі',
-      duration: '155 хв',
       ageLimit: '13+',
+      durationInMins:155,
       description: 'Ветеран автоспорта Сонни Хейс (Брэд Питт) возвращается в большие гонки спустя годы после тяжелой аварии. Ему предстоит стать наставником молодого феномена в вымышленной команде APXGP и дать свой последний бой на треке.'
     }
   ];
@@ -59,7 +59,7 @@ addMovieToFavorites(movie: any) {
         this.favorites.push(movie);
       }
     } else {
-      
+
       this.favorites = this.favorites.filter(m => m.id !== movie.id);
     }
   }

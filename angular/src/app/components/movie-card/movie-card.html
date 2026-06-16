@@ -16,6 +16,7 @@
     <div class="card-body">
       <div class="meta-line"><b>Режисер:</b> {{ movie.director }}</div>
       <div class="meta-line"><b>Жанр:</b> {{ movie.genre }}</div>
+      <div class="movie-duration"><b>Тривалість:</b><span class="time-value">{{ movie.durationInMins | duration }}</span></div>
       <p class="movie-description">{{ movie.description }}</p>
     </div>
 
