@@ -19,7 +19,7 @@ export class MovieListComponent {
       rating: 8.7,
       genre: 'Фантастика, Драма',
       director: 'Крістофер Нолан',
-      durationInMins:169,
+      durationInMins: 169,
       ageLimit: '12+',
       description: 'Подорож дослідників, які використовують нещодавно виявлену космічную діру, щоб обійти обмеження на людські польоти.'
     },
@@ -31,7 +31,7 @@ export class MovieListComponent {
       rating: 7.3,
       genre: 'Екшн, Кримінал, Драма',
       director: 'Метт Рівз',
-      durationInMins:176,
+      durationInMins: 176,
       ageLimit: '16+',
       description: 'Коли серійний вбивця націлюється на еліту Готема, Бетмен змушений розслідувати приховану корупцію в місті.'
     },
@@ -44,7 +44,7 @@ export class MovieListComponent {
       genre: 'Спорт, Драма, Экшен',
       director: 'Джозеф Косінскі',
       ageLimit: '13+',
-      durationInMins:155,
+      durationInMins: 155,
       description: 'Ветеран автоспорта Сонни Хейс (Брэд Питт) возвращается в большие гонки спустя годы после тяжелой аварии. Ему предстоит стать наставником молодого феномена в вымышленной команде APXGP и дать свой последний бой на треке.'
     }
   ];
@@ -52,28 +52,25 @@ export class MovieListComponent {
   favorites: any[] = [];
   watchList: any[] = [];
 
-addMovieToFavorites(movie: any) {
+  addMovieToFavorites(movie: any) {
     if (movie.isFavorite) {
-      
       if (!this.favorites.some(m => m.id === movie.id)) {
         this.favorites.push(movie);
       }
     } else {
-
+      // Благодаря биндингу в HTML, этот фильтр теперь сработает и при клике в списке любимых!
       this.favorites = this.favorites.filter(m => m.id !== movie.id);
     }
   }
 
-  
   addMovieToWatchList(movie: any) {
     if (movie.isWatchLater) {
-      
       if (!this.watchList.some(m => m.id === movie.id)) {
         this.watchList.push(movie);
       }
     } else {
-      
+      // И этот фильтр теперь мгновенно уберет карточку из "Посмотреть позже"
       this.watchList = this.watchList.filter(m => m.id !== movie.id);
     }
   }
-}
+} 

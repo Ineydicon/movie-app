@@ -1,18 +1,13 @@
-.movie-card {
+::ng-deep .movie-card {
   position: relative;
   display: flex;
   flex-direction: column; 
-  justify-content: flex-end; /* Зміщуємо весь текст до нижнього краю */
   background: #0f172a;
   border-radius: 24px;
-  padding: 28px;
-  
-  /* Нові преміальні пропорції: вужчі, але довші */
   width: 360px;
   min-width: 360px;
   max-width: 360px;
   height: 540px; 
-  
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -25,6 +20,24 @@
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
   }
 
+  .p-card-body {
+    padding: 28px !important; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    z-index: 3;
+    color: #f8fafc !important; /* Гарантируем белый текст для всего тела */
+    position: relative !important; 
+    z-index: 3 !important;
+    
+    color: #f8fafc !important;
+  }
+
+  .p-card-content, .p-card-footer {
+    padding: 0 !important;
+  }
+
   .movie-bg-poster {
     position: absolute;
     top: 0;
@@ -34,8 +47,6 @@
     object-fit: cover;
     z-index: 1;
   }
-
-  /* Вертикальний градієнт: плавне затемнення ближче до нижньої частини з текстом */
   .card-overlay {
     position: absolute;
     inset: 0;
@@ -47,194 +58,242 @@
     z-index: 2;
   }
 
-  .movie-info {
-    position: relative;
-    z-index: 3;
+  .card-header {
+    margin-bottom: 12px;
+
+    .movie-title {
+      margin: 8px 0 0 0;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: #ffffff !important;
+
+      .movie-year {
+        color: #94a3b8 !important;
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .badge-row {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    color: #f8fafc;
+    gap: 10px;
+    align-items: center;
 
-    .card-header {
-      margin-bottom: 12px;
+    .movie-rating {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      backdrop-filter: blur(4px);
+      color: #f59e0b !important;
+    }
 
-      .movie-title {
-        margin: 8px 0 0 0;
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 1.25;
-        letter-spacing: -0.5px;
-        color: #ffffff;
+    .age-limit {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #ffffff !important;
+      backdrop-filter: blur(4px);
 
-        .movie-year {
-          color: #94a3b8;
-          font-size: 18px;
-          font-weight: 400;
-        }
+      &.age-18 {
+        background: rgba(239, 68, 68, 0.85);
+        box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
+      }
+      &.age-16 { background: rgba(249, 115, 22, 0.85); }
+      &.age-12 { background: rgba(59, 130, 246, 0.85); }
+      &.age-general { background: rgba(34, 197, 94, 0.85); }
+    }
+  }
+
+  .card-body {
+    margin-bottom: 16px;
+
+    .meta-line {
+      font-size: 13.5px;
+      color: #cbd5e1 !important;
+      margin-bottom: 3px;
+      
+      b {
+        color: #94a3b8 !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .movie-duration {
+    font-size: 13.5px;
+    color: #94a3b8 !important;      
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+
+    b { font-weight: 500; }
+    .time-value {
+      color: #cbd5e1 !important;    
+      font-weight: 600;  
+    }
+  }
+
+  .movie-description {
+    margin: 8px 0 0 0;
+    color: #94a3b8 !important;
+    line-height: 1.5;
+    font-size: 13.5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+    .btn-details {
+      background: #ffffff !important;
+      border: none !important;
+      height: 40px !important; 
+      border-radius: 20px !important; 
+      flex-shrink: 0 !important; 
+      padding: 0 20px !important; 
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08) !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+
+      .p-button-label {
+        color: #0f172a !important;
+        font-size: 13.5px !important; 
+        font-weight: 700 !important; 
+        white-space: nowrap !important; 
+        line-height: normal !important; 
+        letter-spacing: -0.1px !important;
+        padding: 0 !important; 
+      }
+
+      &:hover { 
+        background: #f8fafc !important; 
+        transform: translateY(-2px) !important; 
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.18) !important; 
+      }
+
+      &:active {
+        transform: translateY(0) scale(0.96) !important; 
       }
     }
 
-    .badge-row {
+    .movie-icons {
       display: flex;
       gap: 10px;
-      align-items: center;
+      min-width: 90px; 
+      justify-content: flex-end;
 
-      .movie-rating {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 13px;
-        backdrop-filter: blur(4px);
-        color: #f59e0b;
-      }
-
-      .age-limit {
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-size: 11px;
-        font-weight: 800;
-        color: #ffffff;
-        backdrop-filter: blur(4px);
-
-        &.age-18 {
-          background: rgba(239, 68, 68, 0.85); /* Червоний для 18+ */
-          box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
-        }
-        &.age-16 {
-          background: rgba(249, 115, 22, 0.85); /* Помаранчевий для 16+ */
-        }
-        &.age-12 {
-          background: rgba(59, 130, 246, 0.85); /* Синій для 12+ */
-        }
-        &.age-general {
-          background: rgba(34, 197, 94, 0.85); /* Зелений */
-        }
-      }
-    }
-
-    .card-body {
-      margin-bottom: 16px;
-
-      .meta-line {
-        font-size: 13.5px;
-        color: #cbd5e1;
-        margin-bottom: 3px;
+.btn {
+        /* --- 1. ЖЕСТКАЯ ГЕОМЕТРИЯ (Фикс сдвига влево/вправо) --- */
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         
-        b {
-          color: #94a3b8;
-          font-weight: 500;
-        }
-      }
-    }
- .movie-duration {
-        font-size: 13.5px;
-        color: #94a3b8;      
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 6px;
-        b {
-          font-weight: 500;  /* Делаем надпись аккуратной, не слишком жирной */
-        }
-        .time-value {
-          color: #cbd5e1;    
-          font-weight: 600;  
-        }
-      }
-  
-    .movie-description {
-      margin: 8px 0 0 0;
-      color: #94a3b8;
-      line-height: 1.5;
-      font-size: 13.5px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .card-footer-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-
-      .btn-details {
-        background: #ffffff;
-        color: #0f172a;
-        padding: 10px 22px;
-        border: none;
-        border-radius: 30px;
-        font-size: 13.5px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s, transform 0.2s;
-
-        &:hover { 
-          background: #f1f5f9;
-          transform: scale(1.03);
-        }
-      }
-
-      .movie-icons {
-        display: flex;
-        gap: 10px;
-
+        /* Размеры должны быть фиксированы намертво, padding = 0 */
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0 !important; 
+        margin: 0 !important;
+        border-radius: 50% !important;
         
-        .btn {
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          color: #94a3b8; 
-          backdrop-filter: blur(8px);
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Граница должна быть ВСЕГДА, меняем только цвет */
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        
+        background: rgba(255, 255, 255, 0.06) !important; 
+        color: #cbd5e1 !important; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 
-          svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.2s ease;
-          }
+        /* Эффект размытия - оставляем, но изолируем */
+        backdrop-filter: blur(8px) !important; 
+        -webkit-backdrop-filter: blur(8px) !important; /* Для Safari */
 
-          &:hover {
-            background: rgba(255, 255, 255, 0.16);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            svg { transform: scale(1.1); }
-          }
+        /* --- 2. ЛЕЧЕНИЕ "ДЁРГАНИЯ ТОКОМ" (Точечные транзишены) --- */
+        /* КАТЕГОРИЧЕСКИ НЕЛЬЗЯ ИСПОЛЬЗОВАТЬ transition: all !important; */
+        transition: background-color 0.2s ease,
+                    border-color 0.2s ease,
+                    color 0.2s ease,
+                    box-shadow 0.2s ease !important;
 
-          /* Активне червоне сердечко */
-          &.btn-heart.active {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: rgba(239, 68, 68, 0.5);
-            color: #ef4444;
-            svg {
-              fill: #ef4444; 
-            }
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.35);
-          }
+        /* Включаем аппаратное ускорение для самой кнопки (изолируем backdrop-filter) */
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: background-color, border-color, box-shadow;
 
-          /* Активний жовтий годинник */
-          &.btn-clock.active {
-            background: rgba(245, 158, 11, 0.2);
-            border-color: rgba(245, 158, 11, 0.5);
-            color: #f59e0b;
-            svg {
-              fill: rgba(245, 158, 11, 0.25); 
-            }
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
-          }
+        /* Убираем стандартные ховер-эффекты PrimeNG, которые могут мешать */
+        &:enabled:hover, &:focus {
+          background: rgba(255, 255, 255, 0.12) !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        /* --- 3. АНИМАЦИЯ ТОЛЬКО ИКОНКИ ВНУТРИ --- */
+        .pi {
+          font-size: 17px !important;
+          display: inline-block !important;
+          margin: 0 !important;
+          padding: 0 !important;
           
-          &:active {
-            transform: scale(0.92);
+          /* Анимируем только размер иконки, не меняя размер самой кнопки */
+          transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+          
+          /* Аппаратное ускорение для иконки, чтобы не "мылилась" и не дрожала */
+          transform: scale(1) translateZ(0);
+          -webkit-font-smoothing: antialiased; /* Сглаживание шрифта */
+        }
+
+        &:hover {
+          color: #ffffff !important;
+          
+          /* Увеличиваем только иконку */
+          .pi { 
+            transform: scale(1.18) translateZ(0) !important; 
           }
+        }
+
+        /* --- СОСТОЯНИЯ ACTIVE (Лайк/Закладка нажаты) --- */
+        &.btn-heart.active {
+          background: rgba(239, 68, 68, 0.15) !important;
+          border-color: rgba(239, 68, 68, 0.4) !important;
+          color: #ef4444 !important;
+          box-shadow: 0 0 15px rgba(239, 68, 68, 0.3) !important;
+          
+          &:hover {
+             background: rgba(239, 68, 68, 0.25) !important;
+             border-color: rgba(239, 68, 68, 0.6) !important;
+          }
+        }
+
+        &.btn-clock.active {
+          background: rgba(245, 158, 11, 0.15) !important;
+          border-color: rgba(245, 158, 11, 0.4) !important;
+          color: #f59e0b !important;
+          box-shadow: 0 0 15px rgba(245, 158, 11, 0.3) !important;
+          
+          &:hover {
+             background: rgba(245, 158, 11, 0.25) !important;
+             border-color: rgba(245, 158, 11, 0.6) !important;
+          }
+        }
+        
+        /* Эффект при клике мышкой (нажатие) - легкое уменьшение всей кнопки */
+        &:active {
+          transform: scale(0.95) translateZ(0) !important;
+          transition: transform 0.1s ease !important;
         }
       }
     }

@@ -1,11 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from '../../pipes/duration.pipe';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule, DurationPipe],
+  imports: [CommonModule, DurationPipe, CardModule, ButtonModule],
   templateUrl: './movie-card.html',
   styleUrls: ['./movie-card.scss']
 })
@@ -16,6 +18,7 @@ export class MovieCardComponent {
   
   @Output() addToFavorite = new EventEmitter<any>(); 
   @Output() addToWatchList = new EventEmitter<any>();
+  
 
   toggleFavorite(event: Event) {
     event.stopPropagation();
